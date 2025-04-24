@@ -1,6 +1,0 @@
-<x-basecomponent>
-    
-
-
-
-</x-basecomponent>
