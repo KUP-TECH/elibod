@@ -1,10 +1,5 @@
 <x-basecomponent>
-    <!-- resources/views/loading.blade.php -->
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <meta charset="UTF-8">
-      <title>Welcome</title>
+    
       <style>
         * {
           margin: 0;
@@ -70,8 +65,7 @@
           text-decoration: none;
         }
       </style>
-    </head>
-    <body>
+   
 
       <div class="container">
         <div class="logo">
@@ -79,11 +73,10 @@
         </div>
 
         <div class="buttons">
-          <a href="{{ route('loginpage') }}"><button class="btn btn-login">Log In</button></a>
-          <a href="{{ route('signuppage') }}"><button class="btn btn-signup">Sign Up</button></a>
+          <a href=""><button class="btn btn-login">Log In</button></a>
+          <a href=""><button class="btn btn-signup">Sign Up</button></a>
         </div>
       </div>
 
-    </body>
-    </html>
+
     </x-basecomponent>
