@@ -27,8 +27,20 @@ return [
 
     [
         'route'     => '#',
-        'img'       => 'assets\Carrascal\Agas-as\IMG_1297.JPG',
-        'label'     => 'Carrascal',
+        'img'       => 'assets\Cortes\Bakwitan Cave\IMG_1515.JPG',
+        'label'     => 'Cortes',
+    ],
+    
+    [
+        'route'     => '#',
+        'img'       => 'assets\Lanuza\Aceyoung Paradise\IMG_1582.JPG',
+        'label'     => 'Lanuza',
+    ],
+
+    [
+        'route'     => '#',
+        'img'       => 'assets\Madrid\Bayogo Cove\IMG_1654.JPG',
+        'label'     => 'Madrid',
     ],
    
    

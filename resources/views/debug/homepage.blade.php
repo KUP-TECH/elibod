@@ -18,7 +18,7 @@
           <div class="p-1">
             <a href="{{ url($item['route']) }}" class="text-decoration-none">
               <img src="{{ asset($item['img']) }}" class="rounded-2" style="width: calc(100vw * 0.40); height: calc(100vw * 0.40);">
-              <h5 class="fw-bold text-dark fs-6">{{ $item['label'] }}</h5>
+              <h5 class="fw-bold text-dark fs-6 text-center">{{ $item['label'] }}</h5>
             </a>
           </div>
           @php
@@ -31,7 +31,7 @@
             @if($item != null) 
               <a href="{{ url($item['route']) }}" class="text-decoration-none" >
                 <img src="{{ asset($item['img']) }}" class="rounded-2" style="width: calc(100vw * 0.40); height: calc(100vw * 0.40);">
-                <h5 class="fw-bold text-dark fs-6">{{ $item['label'] }}</h5>
+                <h5 class="fw-bold text-dark fs-6 text-center">{{ $item['label'] }}</h5>
               </a>
             @endif
           </div>
