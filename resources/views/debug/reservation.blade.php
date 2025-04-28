@@ -1,5 +1,5 @@
 <x-basecomponent>
-    <x-pagecomponent asset='assets/Cantilan/Agila White Beach/IMG_2020.JPG' nextLink="#" buttonText="Rerservation">
+    <x-pagecomponent asset='assets/Cantilan/Agila White Beach/IMG_2020.JPG' nextLink="#" buttonText="Reservation">
         
             <h5 class="text-center mb-4 fw-bold">Reservation Request Form</h5>
 
