@@ -7,7 +7,7 @@ return [
 
     [
         'route'     => '#',
-        'img'       => 'assets\Cantilan\Agila White Beach\IMG_1313(1).JPG',
+        'img'       => 'assets\Cantilan\Agila White Beach\IMG_1313.JPG',
         'label'     => 'Cantilan',
     ],
 
