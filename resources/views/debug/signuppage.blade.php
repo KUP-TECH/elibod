@@ -1,7 +1,7 @@
 <x-basecomponent>
     <style>
         body {
-            background-color: #3a6899;
+            background-color: #ffffff;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
@@ -28,7 +28,7 @@
             top: 50%;
             left: 10px;
             transform: translateY(-50%);
-            color: #4276ad;
+            color: rgb(107, 107, 107);
         }
 
         .form-icon-right {
@@ -36,7 +36,7 @@
             top: 50%;
             right: 10px;
             transform: translateY(-50%);
-            color: #4276ad;
+            color: rgb(107, 107, 107);
         }
 
         .form-group {
@@ -49,7 +49,7 @@
         }
 
         .register-btn {
-            background-color: #3f75af;
+            background-color: #4276ad;
             color: #fff;
             border-radius: 10px;
         }
@@ -59,7 +59,7 @@
         }
 
         .login-link {
-            color: #cc1414;
+            color: #ee9b00;
             font-weight: 500;
         }
 
@@ -80,32 +80,37 @@
         <div class="card-border">
             <div class="card-body">
                 <div class="top-banner text-center">
-                    <img src="{{asset('assets\image\Logo\tf.png')}}" class="mb-2" alt="" style="border-radius: 50%; width: 70px; height: 70px;">
+                    <img src="{{asset('assets\image\Logo\tf.png')}}" class="mb-2" alt="" style="border-radius: 50%; width: 120px; height: 120px;">
                     <h1>Registration</h1>
                 </div>
 
                 <div class="px-4 pt-4 pb-3">
                     <form>
-                        <div class="form-group mb-3">
+
+                        <div class="form-group mb-3 position-relative">
                             <i class="bi bi-person-fill form-icon-left"></i>
-                            <input type="text" class="form-control" placeholder="Full Name">
-                            <i class="bi bi-check-circle-fill form-icon-right"></i>
+                            <input type="text" class="form-control" placeholder="Full Name" id="fullNameInput" oninput="checkFullName()">
+                            <i class="bi bi-check-circle-fill form-icon-right text-success d-none" id="fullNameIcon"></i>
                         </div>
+
                         <div class="form-group mb-3">
                             <i class="bi bi-envelope-fill form-icon-left"></i>
-                            <input type="email" class="form-control" placeholder="Email">
-                            <i class="bi bi-check-circle-fill form-icon-right"></i>
+                            <input type="email" class="form-control" placeholder="Email" id="emailInput" oninput="checkEmail()">
+                            <i class="bi bi-check-circle-fill form-icon-right text-success d-none" id="emailIcon"></i>
                         </div>
-                        <div class="form-group mb-3">
+
+                         <div class="form-group mb-3 position-relative">
                             <i class="bi bi-lock-fill form-icon-left"></i>
-                            <input type="password" class="form-control" placeholder="Password">
-                            <i class="bi bi-eye-slash-fill form-icon-right"></i>
+                            <input type="password" class="form-control" placeholder="Password" id="passwordInput">
+                            <i class="bi bi-eye-slash-fill form-icon-right" id="togglePassword" style="cursor: pointer;"></i>
                         </div>
-                        <div class="form-group mb-3">
+
+                        <div class="form-group mb-3 position-relative">
                             <i class="bi bi-lock-fill form-icon-left"></i>
-                            <input type="password" class="form-control" placeholder="Confirm Password">
-                            <i class="bi bi-eye-slash-fill form-icon-right"></i>
+                            <input type="password" class="form-control" placeholder="Confirm Password" id="confirmPasswordInput">
+                            <i class="bi bi-eye-slash-fill form-icon-right" id="toggleConfirmPassword" style="cursor: pointer;"></i>
                         </div>
+
                         <div class="d-flex flex-row justify-content-center mb-3">
                             <button type="submit" class="btn register-btn px-5">Register</button>
                         </div>
@@ -118,4 +123,48 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function checkEmail() {
+        const emailInput = document.getElementById('emailInput');
+        const emailIcon = document.getElementById('emailIcon');
+        
+        if (emailInput.value.trim() !== '') {
+            emailIcon.classList.remove('d-none');
+        } else {
+            emailIcon.classList.add('d-none');
+        }
+        }
+
+        function checkFullName() {
+        const fullNameInput = document.getElementById('fullNameInput');
+        const fullNameIcon = document.getElementById('fullNameIcon');
+        
+        if (fullNameInput.value.trim() !== '') {
+            fullNameIcon.classList.remove('d-none');
+        } else {
+            fullNameIcon.classList.add('d-none');
+        }
+        }
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('passwordInput');
+        togglePassword.addEventListener('click', function () {
+        const type = passwordInput.type === 'password' ? 'text' : 'password';
+        passwordInput.type = type;
+        this.classList.toggle('bi-eye-fill');
+        this.classList.toggle('bi-eye-slash-fill');
+        });
+
+        const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
+        const confirmPasswordInput = document.getElementById('confirmPasswordInput');
+        toggleConfirmPassword.addEventListener('click', function () {
+        const type = confirmPasswordInput.type === 'password' ? 'text' : 'password';
+        confirmPasswordInput.type = type;
+        this.classList.toggle('bi-eye-fill');
+        this.classList.toggle('bi-eye-slash-fill');
+        });
+    </script>
+
+
+
 </x-basecomponent>

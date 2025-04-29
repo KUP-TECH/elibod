@@ -52,7 +52,7 @@
 
         .register-link,
         .forgot-password {
-            color: #ff0000;
+            color: #ee9b00;
             font-weight: 500;
         }
 
@@ -70,11 +70,12 @@
 
     </style>
 
-    <div class="container">
+    <div class="container mb-3">
         <div class="card card-border">
             <div class="card-body">
+            
                 <div class="top-banner text-center">
-                    <img src="{{asset('assets\image\Logo\tf.png')}}" alt="" style="border-radius: 100%; width: 100px; height: 100px;"class="mb-1">
+                    <img src="{{asset('assets\image\Logo\tf.png')}}" alt="" style="border-radius: 100%; width: 120px; height: 120px;"class="mb-1">
                     <h2>Welcome!</h2>
                 </div>
 
@@ -84,27 +85,45 @@
                             <i class="bi bi-envelope-fill form-icon"></i>
                             <input type="email" class="form-control" placeholder="Email">
                         </div>
-                        <div class="form-group mb-3">
+
+                        <div class="form-group mb-3 position-relative">
                             <i class="bi bi-lock-fill form-icon"></i>
-                            <input type="password" class="form-control" placeholder="Password">
-                            <span class="position-absolute top-50 end-0 translate-middle-y me-3">
-                                <i class="bi bi-eye-slash-fill"></i>
+                            <input type="password" class="form-control" placeholder="Password" id="passwordInput">
+                            <span class="position-absolute top-50 end-0 translate-middle-y me-3" onclick="togglePassword()" style="cursor: pointer;">
+                            <i id="toggleIcon" class="bi bi-eye-slash-fill"></i>
                             </span>
                         </div>
 
                         <div class="mb-3 d-flex flex-row justify-content-center">
                             <button type="submit" class="btn login-btn px-5">Log in</button>
                         </div>
+
                         <div class="text-center">
                             <h6>Don't have an account? <a href="#" class="register-link">Register</a></h6>
                         </div>
+
                     </form>
                 </div>
             </div>
         </div>
     </div>
 
-
+    <script>
+        function togglePassword() {
+        const passwordInput = document.getElementById('passwordInput');
+        const icon = document.getElementById('toggleIcon');
+        
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            icon.classList.remove('bi-eye-slash-fill');
+            icon.classList.add('bi-eye-fill');
+        } else {
+            passwordInput.type = 'password';
+            icon.classList.remove('bi-eye-fill');
+            icon.classList.add('bi-eye-slash-fill');
+        }
+        }
+    </script>
 
 
 </x-basecomponent>
