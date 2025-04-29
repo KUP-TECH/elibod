@@ -12,13 +12,13 @@
     }
 
     img {
-      width: 200px;
-      height: 200px;
+      width: 250px;
+      height: 250px;
     }
   </style>
    
     
-      <img src="{{ asset('assets\image\Logo\lolo1.png') }}" style="width: 200px; height: auto;" alt="Loading..." />
+      <img src="{{ asset('assets\image\Logo\lolo1.png') }}" style="width: 450px; height: auto;" alt="Loading..." />
  
 
 </x-basecomponent>

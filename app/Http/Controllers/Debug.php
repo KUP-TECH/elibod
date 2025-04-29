@@ -8,7 +8,7 @@ class Debug extends Controller
 {
     public function index () {
 
-        return view('debug.signuppage');
+        return view('debug.loadingpage');
     }
    
 }
