@@ -31,6 +31,14 @@
             transform: translateY(-50%);
             color: rgb(107, 107, 107);
         }
+        
+        .form-icon-right {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            color: rgb(107, 107, 107);
+        }
 
         .form-group {
             position: relative;
@@ -73,7 +81,7 @@
     <div class="container mb-3">
         <div class="card card-border">
             <div class="card-body">
-            
+
                 <div class="top-banner text-center">
                     <img src="{{asset('assets\image\Logo\tf.png')}}" alt="" style="border-radius: 100%; width: 120px; height: 120px;"class="mb-1">
                     <h2>Welcome!</h2>
@@ -83,7 +91,8 @@
                     <form action>
                         <div class="form-group mb-3">
                             <i class="bi bi-envelope-fill form-icon"></i>
-                            <input type="email" class="form-control" placeholder="Email">
+                            <input type="email" class="form-control" placeholder="Email" id="emailInput" oninput="checkEmail()">
+                            <i class="bi bi-check-circle-fill form-icon-right text-success d-none" id="emailIcon"></i>
                         </div>
 
                         <div class="form-group mb-3 position-relative">
@@ -109,6 +118,17 @@
     </div>
 
     <script>
+    function checkEmail(){
+        const emailInput = document.getElementById('emailInput');
+        const emailIcon =  document.getElementById('emailIcon');
+
+        if (emailInput.value.trim() !== ''){
+            emailIcon.classList.remove('d-none');  
+        } else{
+            emailIcon.classList.add('d-none');
+        }
+    }
+    
         function togglePassword() {
         const passwordInput = document.getElementById('passwordInput');
         const icon = document.getElementById('toggleIcon');
