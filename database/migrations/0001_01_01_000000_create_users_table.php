@@ -20,35 +20,46 @@ return new class extends Migration
             $table->string('password');
         });
 
-        Schema::create('municipalities', function (Blueprint $table) {
+        Schema::create('municipality', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('iframe');
+            $table->string('icon');
             $table->string('img');
+            $table->string('bg_img');
+            $table->string('map_img');
+            $table->string('description');
         });
 
-        Schema::create('attractions', function (Blueprint $table) {
+
+        Schema::create( 'festival', function (Blueprint $table) {
             $table->id();
-            $table->integer('m_id');
-            $table->string('name');
-            $table->string('iframe');
-            $table->string('img_path');
-            $table->string('img');
+            $table->string('fest_name');
+            $table->string('description');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
         });
+
+        // Schema::create('attractions', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->integer('m_id');
+        //     $table->string('name');
+        //     $table->string('iframe');
+        //     $table->string('img_path');
+        //     $table->string('img');
+        // });
         
-        Schema::create('reservations', function (Blueprint $table) {
-            $table->id();
-            $table->integer('attr_id');
-            $table->string('name');
-            $table->string('address');
-            $table->string('no');
-            $table->date('arrival');
-            $table->time('time');
-            $table->time('t_checkout');
-            $table->integer('kids');
-            $table->integer('adults');
-            $table->string('img');
-        });
+        // Schema::create('reservations', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->integer('attr_id');
+        //     $table->string('name');
+        //     $table->string('address');
+        //     $table->string('no');
+        //     $table->date('arrival');
+        //     $table->time('time');
+        //     $table->time('t_checkout');
+        //     $table->integer('kids');
+        //     $table->integer('adults');
+        //     $table->string('img');
+        // });
         
         Schema::create('sessions', function (Blueprint $table) {
             $table->string('id')->primary();
