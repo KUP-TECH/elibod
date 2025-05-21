@@ -38,10 +38,10 @@
                 @foreach($municipality as $key => $v)
                     <tr>
                         <td>{{ $v->name }}</td>
-                        <td><img src="{{ asset('storage/uploads/municipality/Surigao/icon') .'/' . $v->icon }}" alt="" style="width: 50px; height: 50px;"></td>
-                        <td><img src="{{ asset('storage/uploads/municipality/Surigao/img') .'/' . $v->icon }}" alt="" style="width: 50px; height: 50px;"></td>
-                        <td><img src="{{ asset('storage/uploads/municipality/Surigao/bg') .'/' . $v->icon }}" alt="" style="width: 50px; height: 50px;"></td>
-                        <td><img src="{{ asset('storage/uploads/municipality/Surigao/map') .'/' . $v->icon }}" alt="" style="width: 50px; height: 50px;"></td>
+                        <td><img src="{{ asset('storage/uploads/municipality/') . '/' . $v->name .'//icon/' . $v->icon }}" alt="" style="width: 50px; height: 50px;"></td>
+                        <td><img src="{{ asset('storage/uploads/municipality/') . '/' . $v->name .'/img/' . $v->img }}" alt="" style="width: 50px; height: 50px;"></td>
+                        <td><img src="{{ asset('storage/uploads/municipality/') . '/' . $v->name . '/bg/' . $v->bg_img }}" alt="" style="width: 50px; height: 50px;"></td>
+                        <td><img src="{{ asset('storage/uploads/municipality/') . '/' . $v->name .'//map/' . $v->map_img }}" alt="" style="width: 50px; height: 50px;"></td>
                         <td>{{ $v->description }}</td>
                         <td><a href="{{ route('delete_municipality', ['id' => $v->id]) }}"><i class="bi bi-x fs-1"></i></a></td>
                     </tr>
