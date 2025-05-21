@@ -35,17 +35,27 @@ return new class extends Migration
             $table->id();
             $table->string('fest_name');
             $table->string('description');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('municipality_id')->constrained('municipality')->onDelete('cascade');
         });
 
-        // Schema::create('attractions', function (Blueprint $table) {
-        //     $table->id();
-        //     $table->integer('m_id');
-        //     $table->string('name');
-        //     $table->string('iframe');
-        //     $table->string('img_path');
-        //     $table->string('img');
-        // });
+        Schema::create('attractions', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('municipality_id')->constrained('municipality')->onDelete('cascade');
+            $table->string('attraction_name');
+            $table->string('location');
+            $table->string('about');
+            $table->string('img');
+            $table->string('bg_img');
+            $table->string('map_img');
+        });
+
+
+        Schema::create('attraction_img', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('attractions_id')->constrained('attractions')->onDelete('cascade');
+            $table->string('img');
+        });
+        
         
         // Schema::create('reservations', function (Blueprint $table) {
         //     $table->id();

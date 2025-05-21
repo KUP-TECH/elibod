@@ -17,4 +17,9 @@ class Municipality extends Model
         'map_img',
         'description',
     ];
+
+    public function attractions()
+    {
+        return $this->hasMany(Attractions::class, 'municipality_id');
+    }
 }
