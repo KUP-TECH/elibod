@@ -31,8 +31,9 @@ Route::middleware(['auth:web'])->group(function () {
 
     Route::get('/municipalities', [Municipalities::class, 'municipalities'])->name('municipalities');
     Route::get('/view_municipality', [Municipalities::class, 'view_municipality'])->name('view_municipality');
-    Route::get('/attractions', [Attractions::class, 'attractions'])->name('attractions');
 
+    Route::get('/attractions', [Attractions::class, 'attractions'])->name('attractions');
+    Route::get('/view_attraction', [Attractions::class, 'view_attraction'])->name('view_attraction');
 
 
 

@@ -31,6 +31,12 @@ class Attractions extends Controller
 
         return view('pages.attractions', $data);
     }
-
+    public function view_attraction()
+    {
+        $id = request()->input('id');
+        $data['a'] = AttractionsModel::where('id', $id)->first();
+        // dd($data['a']);
+        return view('pages.aboutcontent', $data);
+    }
 
 }
