@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Attractions;
 use App\Models\Municipality;
 use App\Models\Festival;
+use App\Models\AttractionImg;
 use Illuminate\Http\Request;
 
 class System extends Controller
@@ -154,5 +155,41 @@ class System extends Controller
 
         Festival::destroy($id);
         return back()->with('status', ['alert' => 'alert-danger', 'msg' => 'Deleted Festival']);
+    }
+
+
+    public function attraction_img() {
+        $data['attractions'] = Attractions::select('id', 'attraction_name')->get();
+        $data['attraction_img'] = AttractionImg::with('attraction')->get();
+        // dd($data['attraction_img']);
+        return view('pages.system.attraction_img', $data);
+    }
+
+    public function add_attraction_img(Request $request) {
+        $validated = $request->validate([
+            'attraction'    => 'required',
+            'img'           => 'required|file',
+        ]);
+
+        // dd($validated);
+
+        $file       = $request->file('img');
+        $ext        = $file->getClientOriginalExtension();
+        $photoPath  = $validated['attraction'] . '.' . $ext;
+        $file->storeAs('uploads/attractions/' . $validated['attraction'] . '/extra', $photoPath, 'public');
+
+        AttractionImg::create([
+            'attractions_id'   => $validated['attraction'],
+            'img'              => $photoPath,
+        ]);
+
+        return back()->with('status', ['alert' => 'alert-success', 'msg' => 'Created Attraction Image']);
+    }
+
+    public function delete_attraction_img(Request $request) {
+        $id = $request->input('id');
+
+        AttractionImg::destroy($id);
+        return back()->with('status', ['alert' => 'alert-danger', 'msg' => 'Deleted Attraction Image']);
     }
 }

@@ -27,7 +27,9 @@ Route::middleware(['auth:web'])->group(function () {
     Route::post('/system/add_festival', [System::class, 'add_festival'])->name('add_festival');
     Route::get('/system/delete_festival', [System::class, 'delete_festival'])->name('delete_festival');
     
-    
+    Route::get('/system/img_attractions', [System::class, 'attraction_img'])->name('system_img_attractions');
+    Route::post('/system/add_img_attraction', [System::class, 'add_attraction_img'])->name('add_img_attraction');
+    Route::get('/system/delete_img_attraction', [System::class, 'delete_attraction_img'])->name('delete_img_attraction');
 
     Route::get('/municipalities', [Municipalities::class, 'municipalities'])->name('municipalities');
     Route::get('/view_municipality', [Municipalities::class, 'view_municipality'])->name('view_municipality');
