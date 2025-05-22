@@ -15,32 +15,33 @@
     <!-- Municipalities Grid -->
     <div class="container-fluid px-4 py-3">
       @for ($i = 0; $i < count($municipalities); $i += 2)
-        <div class="d-flex mb-3 gap-3 justify-content-center">
-          @php $item1 = $municipalities[$i]; @endphp
-          <div class="text-center" style="width: 48%;">
-            <a href="#" class="text-decoration-none">
-              <img src="{{ asset('storage/uploads/municipality/' . $item1->name . '/img/' . $item1->img) }}" 
-                  class="rounded-3 shadow-sm w-100" 
-                  style="aspect-ratio: 1 / 1; object-fit: cover;">
-              <div class="fw-medium text-dark mt-1 small">{{ $item1->name }}</div>
-            </a>
-          </div>
+      @php $item1 = $municipalities[$i]; @endphp
 
-          @php $item2 = $municipalities[$i + 1] ?? null; @endphp
-          @if ($item2)
-          <div class="text-center" style="width: 48%;">
-            <a href="#" class="text-decoration-none">
-              <img src="{{ asset('storage/uploads/municipality/' . $item2->name . '/img/' . $item2->img) }}" 
-                  class="rounded-3 shadow-sm w-100" 
-                  style="aspect-ratio: 1 / 1; object-fit: cover;">
-              <div class="fw-medium text-dark mt-1 small">{{ $item2->name }}</div>
-            </a>
-          </div>
-          @else
-          <div style="width: 48%;"></div>
-          @endif
-        </div>
-      @endfor
+    <div class="d-flex mb-3 gap-3 justify-content-center">
+      <div class="text-center" style="width: 48%;" onclick="location.href='{{ route('view_municipality', ['id' => $item1->id]) }}'">
+      <a href="#" class="text-decoration-none">
+        <img src="{{ asset('storage/uploads/municipality/' . $item1->name . '/img/' . $item1->img) }}" 
+          class="rounded-3 shadow-sm w-100" 
+          style="aspect-ratio: 1 / 1; object-fit: cover;">
+        <div class="fw-medium text-dark mt-1 small">{{ $item1->name }}</div>
+      </a>
+      </div>
+
+      @php $item2 = $municipalities[$i + 1] ?? null; @endphp
+      @if ($item2)
+      <div class="text-center" style="width: 48%;" onclick="location.href='{{ route('view_municipality', ['id' => $item2->id]) }}'">
+      <a href="#" class="text-decoration-none">
+        <img src="{{ asset('storage/uploads/municipality/' . $item2->name . '/img/' . $item2->img) }}" 
+          class="rounded-3 shadow-sm w-100" 
+          style="aspect-ratio: 1 / 1; object-fit: cover;">
+        <div class="fw-medium text-dark mt-1 small">{{ $item2->name }}</div>
+      </a>
+      </div>
+      @else
+      <div style="width: 48%;"></div>
+      @endif
+    </div>
+    @endfor
 
     </div>
 

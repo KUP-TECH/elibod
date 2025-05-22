@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Attractions;
 use App\Models\Municipality;
+use App\Models\Festival;
 use Illuminate\Http\Request;
 
 class System extends Controller
@@ -122,5 +123,36 @@ class System extends Controller
 
         Attractions::destroy($id);
         return back()->with('status', ['alert' => 'alert-danger', 'msg' => 'Deleted Attraction']);
+    }
+
+
+    public function festival() {
+        $data['municipality']   = Municipality::select('id', 'name')->get();
+        $data['festival']       = Festival::with('municipality')->get();
+        // dd($data['festival']);
+        return view('pages.system.festival', $data);
+    }
+
+    public function add_festival(Request $request) {
+        $validated = $request->validate([
+            'municipality'  => 'required',
+            'fest_name'     => 'required',
+            'description'   => 'required',
+        ]);
+
+        Festival::create([
+            'municipality_id'   => $validated['municipality'],
+            'fest_name'         => $validated['fest_name'],
+            'description'       => $validated['description'],
+        ]);
+
+        return back()->with('status', ['alert' => 'alert-success', 'msg' => 'Created Festival']);
+    }
+
+    public function delete_festival(Request $request) {
+        $id = $request->input('id');
+
+        Festival::destroy($id);
+        return back()->with('status', ['alert' => 'alert-danger', 'msg' => 'Deleted Festival']);
     }
 }
