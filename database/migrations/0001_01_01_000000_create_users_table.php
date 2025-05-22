@@ -57,19 +57,7 @@ return new class extends Migration
         });
         
         
-        // Schema::create('reservations', function (Blueprint $table) {
-        //     $table->id();
-        //     $table->integer('attr_id');
-        //     $table->string('name');
-        //     $table->string('address');
-        //     $table->string('no');
-        //     $table->date('arrival');
-        //     $table->time('time');
-        //     $table->time('t_checkout');
-        //     $table->integer('kids');
-        //     $table->integer('adults');
-        //     $table->string('img');
-        // });
+        
         
         Schema::create('sessions', function (Blueprint $table) {
             $table->string('id')->primary();

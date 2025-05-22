@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Attractions as AttractionsModel;
+use App\Models\AttractionImg as Att;
 
 class Attractions extends Controller
 {
@@ -34,7 +35,8 @@ class Attractions extends Controller
     public function view_attraction()
     {
         $id = request()->input('id');
-        $data['a'] = AttractionsModel::where('id', $id)->first();
+        $data['a']      = AttractionsModel::where('id', $id)->first();
+        $data['img']    = Att::where('attractions_id', $id)->get();
         // dd($data['a']);
         return view('pages.aboutcontent', $data);
     }

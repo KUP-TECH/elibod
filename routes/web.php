@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Municipalities;
 use App\Http\Controllers\Attractions;
-
+use App\Http\Controllers\Reservations;
 use App\Http\Controllers\App;
 use App\Http\Controllers\Debug;
 use App\Http\Controllers\System;
@@ -38,5 +38,8 @@ Route::middleware(['auth:web'])->group(function () {
     Route::get('/view_attraction', [Attractions::class, 'view_attraction'])->name('view_attraction');
 
 
+    Route::get('/reservations', [Reservations::class, 'reservations'])->name('reservations');
+    Route::post('/add_reservation', [Reservations::class, 'add_reservation'])->name('add_reservation');
+    Route::get('/reservation_success', [Reservations::class, 'reservation_success'])->name('reservation_success');
 
 });

@@ -21,7 +21,7 @@
                     @php $item = $attractions[$i]; @endphp
                     <div class="card card-body px-1" style="width: 48%" onclick="location.href='{{ route('view_attraction', ['id' => $item->id]) }}'">
                         <p class="fs-6 text-center mb-0 text-primary">{{$item->attraction_name}}</p>
-                        <p class="fw-light text-center fs-10">{{$item->attraction_name}}</p>
+                        <p class="fw-light text-center fs-8">{{$item->attraction_name}}</p>
                         <img src="{{ asset("storage/uploads/attractions/$item->attraction_name/img/$item->img") }}"
                             class="rounded-3 shadow-sm w-100 px-3" style="aspect-ratio: 1 / 1; object-fit: cover;">
                     </div>
@@ -29,7 +29,7 @@
                     @if ($item2)
                         <div class="card card-body px-1" style="width: 48%" onclick="location.href='{{ route('view_attraction', ['id' => $item2->id]) }}'">
                             <p class="fs-6 text-center mb-0 text-primary">{{$item2->attraction_name}}</p>
-                            <p class="fw-light text-center fs-10">{{$item2->attraction_name}}</p>
+                            <p class="fw-light text-center fs-8">{{$item2->attraction_name}}</p>
                             <img src="{{ asset("storage/uploads/attractions/$item2->attraction_name/img/$item2->img") }}"
                                 class="rounded-3 shadow-sm w-100 px-3" style="aspect-ratio: 1 / 1; object-fit: cover;">
                         </div>
