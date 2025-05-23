@@ -24,7 +24,13 @@ class App extends Controller
         ]);
 
         if(Auth::attempt($validated)) {
-            return redirect()->route('municipalities');
+
+            if(Auth::user()->type == 'client'){
+                return redirect()->route('municipalities');
+            } else {
+                return redirect()->route('system_municipality');
+            }
+
         } else {
             return redirect()->back()->with('status',['alert' => 'alert-warning', 'msg' => 'Error! Invalid Credentials']);
         }
