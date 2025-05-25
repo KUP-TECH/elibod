@@ -46,7 +46,9 @@
                             <a href="{{ route('delete_img_attraction', ['id' => $a->id]) }}">
                                 <i class="bi bi-x fs-1"></i>
                             </a>
+
                         </td>
+                       
                     </tr>
                 @endforeach
             </tbody>
