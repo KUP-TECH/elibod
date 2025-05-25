@@ -1,5 +1,7 @@
 <x-pagecomponentpost asset='{{ asset("storage/uploads/attractions/$attraction->attraction_name/bg_img/$attraction->bg_img") }}' buttonText="Reserve" post_link="{{ route('add_reservation') }}">
-
+    <a href="{{ url()->previous() }}" class="ms-2">
+        <i class="bi bi-arrow-left-circle text-white bg-transparent opacity-75 fs-1"></i>
+    </a>
     <h5 class="text-center mb-4 fw-bold">Reservation Request Form</h5>
 
     <input type="hidden" name="attraction_id" value="{{ $attraction->id }}">

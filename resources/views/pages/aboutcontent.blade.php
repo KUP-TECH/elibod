@@ -16,7 +16,7 @@
            
         </div>
         <div class="p-0 mx-1 mt-3 mb-1 rounded-3">
-            <img src="{{ asset("storage/uploads/attractions/Kakupalan/map_img/Kakupalan.png") }}" class="rounded-4 align-items-center" style="width: 100%; height: calc(100vh * 0.2);">
+            <img src="{{ asset("storage/uploads/attractions/$a->attraction_name/img/$a->img") }}" class="rounded-4 align-items-center" style="width: 100%; height: calc(100vh * 0.2);">
         </div>
         
         

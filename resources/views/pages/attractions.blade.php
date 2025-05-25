@@ -1,11 +1,14 @@
 <x-basecomponent>
     <div class="container-fluid p-0 bg-app-bgnd bg-gradient min-vh-100 d-flex flex-column">
-
+        
         <!-- Logo + App Name -->
         <x-logocomponent />
+        
 
         <!-- Search bar -->
         <div class="px-4 pt-2">
+            <a href="{{ url()->previous() }}" class="ms-2">
+                <i class="bi bi-arrow-left-circle text-white bg-transparent opacity-75 fs-1"></i></a>
             <form action="" method="GET">
                 <input type="text" class="form-control rounded-pill shadow-sm px-3 bg-white" name="search"
                     placeholder="Search">
@@ -15,6 +18,7 @@
 
         <!-- Municipalities Grid -->
         <div class="container-fluid px-4 py-3">
+            
             @for ($i = 0; $i < count($attractions); $i += 2)
 
                 <div class="d-flex mb-3 gap-3 justify-content-center">
