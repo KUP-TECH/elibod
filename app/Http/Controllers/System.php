@@ -10,8 +10,9 @@ use Illuminate\Http\Request;
 
 class System extends Controller
 {
-    public function system() {
-
+    public function system(Request $request) {
+        $id = $request->input('id');
+        $data['edit'] = Municipality::find($id);
 
         $data['municipality'] = Municipality::all();
 
@@ -21,6 +22,45 @@ class System extends Controller
 
     }
 
+    public function edit_municipality(Request $request) {
+        $validated = $request->validate([
+            'municipality'  => 'required',
+            'icon'          => 'required|file',
+            'img'           => 'required|file',
+            'bg'            => 'required|file',
+            'map'           => 'required|file',
+            'desc'          => 'required',
+        ]);
+        $id = $request->input('id');
+        $d = Municipality::find($id);
+
+        if (!$d) {
+            return back()->with('status', ['alert' => 'alert-danger', 'msg' => 'Municipality not found']);
+        }
+
+        $files = ['icon', 'img', 'bg', 'map'];
+        $assoc = [];
+        foreach ($files as $f) {
+            $file = $request->file($f);
+            $ext  = $file->getClientOriginalExtension();
+            $photoPath = $validated['municipality'] . '.' . $ext;
+            $file->storeAs('uploads/municipality/' . $validated['municipality'] . '/' . $f, $photoPath, 'public');
+            $assoc[$f] = $photoPath;
+        }
+
+
+        $d->update([
+            'name'          => $validated['municipality'],
+            'icon'          => $assoc['icon'],
+            'img'           => $assoc['img'],
+            'bg_img'        => $assoc['bg'],
+            'map_img'       => $assoc['map'],
+            'description'   => $validated['desc'],
+        ]);
+
+        return redirect()->route('system_municipality')->with('status', ['alert' => 'alert-success', 'msg' => 'Updated Municipality']);
+    }
+    
 
 
     public function delete_municipality(Request $request) {
@@ -191,5 +231,12 @@ class System extends Controller
 
         AttractionImg::destroy($id);
         return back()->with('status', ['alert' => 'alert-danger', 'msg' => 'Deleted Attraction Image']);
+    }
+
+
+    public function view_reservation() {
+        $data['reservations'] = \App\Models\Reservation::with(['attraction', 'user'])->get();
+        // dd($data['reservations']);
+        return view('pages.system.reservation', $data);
     }
 }

@@ -18,6 +18,7 @@ Route::middleware(['auth:web'])->group(function () {
     Route::get('/system/municipality', [System::class, 'system'])->name('system_municipality');
     Route::post('/system/add_municipality', [System::class, 'add_municipality'])->name('add_municipality');
     Route::get('/system/delete_municipality', [System::class, 'delete_municipality'])->name('delete_municipality');
+    Route::post('/system/edit_municipality', [System::class, 'edit_municipality'])->name('edit_municipality');
     
     Route::get('/system/attractions', [System::class, 'attractions'])->name('system_attractions');
     Route::post('/system/add_attraction', [System::class, 'add_attraction'])->name('add_attraction');
@@ -30,6 +31,9 @@ Route::middleware(['auth:web'])->group(function () {
     Route::get('/system/img_attractions', [System::class, 'attraction_img'])->name('system_img_attractions');
     Route::post('/system/add_img_attraction', [System::class, 'add_attraction_img'])->name('add_img_attraction');
     Route::get('/system/delete_img_attraction', [System::class, 'delete_attraction_img'])->name('delete_img_attraction');
+
+
+    Route::get('/system/view_reservation', [System::class, 'view_reservation'])->name('view_reservation');
 
     Route::get('/municipalities', [Municipalities::class, 'municipalities'])->name('municipalities');
     Route::get('/view_municipality', [Municipalities::class, 'view_municipality'])->name('view_municipality');
