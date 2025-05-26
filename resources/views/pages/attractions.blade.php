@@ -7,7 +7,7 @@
 
         <!-- Search bar -->
         <div class="px-4 pt-2">
-            <a href="{{ url()->previous() }}" class="ms-2">
+            <a href="javascript:history.back()" class="ms-2">
                 <i class="bi bi-arrow-left-circle text-white bg-transparent opacity-75 fs-1"></i></a>
             <form action="" method="GET">
                 <input type="text" class="form-control rounded-pill shadow-sm px-3 bg-white" name="search"

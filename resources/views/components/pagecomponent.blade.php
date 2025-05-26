@@ -4,10 +4,10 @@
 
 
         <div class="container-fluid px-4 bg-app-bgnd bg-gradient">
-            <div class="vh-100 rounded-4" style="background-image: url('{{ asset( $asset ) }}'); background-repeat: no-repeat; background-size: cover;">
+            <div class="vh-100 rounded-4" style="background-image: url('{{ asset($asset) }}'); background-repeat: no-repeat; background-size: cover;">
                 <div class="d-flex flex-column justify-content-between vh-100">
 
-                    <a href="{{ url()->previous() }}" class="ms-2">
+                    <a href="javascript:history.back()" class="ms-2">
                         <i class="bi bi-arrow-left-circle text-white bg-transparent opacity-75 fs-1"></i>
                     </a>
 
