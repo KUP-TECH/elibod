@@ -22,6 +22,7 @@ Route::middleware(['auth:web'])->group(function () {
     
     Route::get('/system/attractions', [System::class, 'attractions'])->name('system_attractions');
     Route::post('/system/add_attraction', [System::class, 'add_attraction'])->name('add_attraction');
+    Route::post('/system/edit_attractions', [System::class, 'edit_attraction'])->name('edit_attraction');
     Route::get('/system/delete_attraction', [System::class, 'delete_attraction'])->name('delete_attraction');
 
     Route::get('/system/festivals', [System::class, 'festival'])->name('system_festivals');

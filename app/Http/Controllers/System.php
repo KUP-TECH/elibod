@@ -116,7 +116,15 @@ class System extends Controller
 
 
 
-    public function attractions() {
+    public function attractions(Request $request) {
+        $id = $request->input('id');
+        
+        if($id != null && $id != ''){
+            $data['edit'] = Attractions::with('municipality:id,name')
+            ->where('id', $id)
+            ->first();
+        }
+
         $data['municipality']   = Municipality::select('id', 'name')->get();
         $data['attractions']    = Attractions::with('municipality:id,name')->get();
         
@@ -157,6 +165,46 @@ class System extends Controller
         ]);
 
         return back()->with('status', ['alert' => 'alert-success', 'msg' => 'Created Attraction']);
+    }
+
+
+    public function edit_attraction(Request $request) {
+
+
+        $validated = $request->validate([
+            'municipality'      => 'required',
+            'attraction_name'   => 'required',
+            'location'          => 'required',
+            'about'             => 'required',
+            'img'               => 'required|file',
+            'bg_img'            => 'required|file',
+            'map_img'           => 'required|file',
+            'id'                => 'required'
+        ]);
+
+        $files = ['img', 'bg_img', 'map_img'];
+        $assoc = [];
+        foreach ($files as $f) {
+            $file       = $request->file($f);
+            $ext        = $file->getClientOriginalExtension();
+            $photoPath  = $validated['attraction_name'] . '.' . $ext;
+            $file->storeAs('uploads/attractions/' . $validated['attraction_name'] . '/' . $f, $photoPath, 'public');
+            $assoc[$f] = $photoPath;
+        }
+
+        Attractions::find($validated['id'])->update([
+            'municipality_id'   => $validated['municipality'],
+            'attraction_name'   => $validated['attraction_name'],
+            'location'          => $validated['location'],
+            'about'             => $validated['about'],
+            'img'               => $assoc['img'],
+            'bg_img'            => $assoc['bg_img'],
+            'map_img'           => $assoc['map_img'],
+        ]);
+
+        
+
+        return redirect()->route('system_attractions')->with('status', ['alert' => 'alert-success', 'msg' => 'Edited Attraction']);
     }
 
     public function delete_attraction(Request $request) {
