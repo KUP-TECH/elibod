@@ -262,8 +262,9 @@ class System extends Controller
         // dd($validated);
 
         $file       = $request->file('img');
+        $filename   = $file->getClientOriginalName();
         $ext        = $file->getClientOriginalExtension();
-        $photoPath  = $validated['attraction'] . '.' . $ext;
+        $photoPath  = md5($filename) . '.' . $ext;
         $file->storeAs('uploads/attractions/' . $validated['attraction'] . '/extra', $photoPath, 'public');
 
         AttractionImg::create([
